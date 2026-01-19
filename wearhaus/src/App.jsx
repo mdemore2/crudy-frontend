@@ -7,6 +7,7 @@ import Home from './components/home'
 import LoginForm from './components/login'
 import MyItems from './components/myitems'
 import CreateItemForm from './components/createitem'
+import EditItemForm from './components/edititem'
 
 function App({page}) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -85,6 +86,13 @@ function App({page}) {
       <div>
         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         <CreateItemForm isEdit={isEdit} toggleReload={toggleReload} setToggleReload={setToggleReload}/>
+      </div>
+  )
+  }  else if (page=="edit-item") {
+    return (
+      <div>
+        <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+        <EditItemForm currentItem={currentItem} setCurrentItem={setCurrentItem} toggleReload={toggleReload} setToggleReload={setToggleReload}/>
       </div>
   )
   } else if (page=="my-items") {

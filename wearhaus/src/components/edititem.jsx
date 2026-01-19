@@ -1,34 +1,34 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function EditItemForm (item, toggleReload, setToggleReload) {
+function EditItemForm ({currentItem, toggleReload, setToggleReload}) {
     const navigate = useNavigate();
-
+    console.log(currentItem.name);
     const [formData, setFormData] = useState({
-            name: item['name'],
-            description: item['description'],
-            quantity: item['quantity'],
+            name: currentItem.name,
+            description: currentItem.description,
+            quantity: currentItem.quantity,
     });
+
+    
      
+    console.log(formData);
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value});
     };
 
     async function handleSubmit(e){
         e.preventDefault();
-        const data = new FormData();
-        for (const [key, value] of Object.entries(formData)) {
-            data.append(key, value);
-        }
+
         const requestOptions = {
-            method: 'POST',
-            body: data,
+            method: 'PUT',
+            body: JSON.stringify(formData),
             credentials: 'include',
 
         };
         console.log(requestOptions);
         try {
-            const response =  await fetch('http://localhost:8000/inventory/create-item', requestOptions);
+            const response =  await fetch(`http://localhost:8000/inventory/edit-item/${currentItem.id}`, requestOptions);
             let body = response.json();
             console.log(body);
             setToggleReload(!toggleReload);
@@ -38,13 +38,7 @@ function EditItemForm (item, toggleReload, setToggleReload) {
         }
     };
 
-    //if (isEdit){
-    //    setFormData({
-    //        name: item['name'],
-    //        description:  item['description'],
-    //        quantity:  item['quantity'],
-    //    });
-    //};
+
 
     return <div className="edit">
         <form onSubmit={handleSubmit}>
