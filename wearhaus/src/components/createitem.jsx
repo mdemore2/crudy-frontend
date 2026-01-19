@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function CreateItemForm (toggleReload, setToggleReload) {
+function CreateItemForm ({toggleReload, setToggleReload}) {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({

@@ -85,7 +85,7 @@ function App({page}) {
     return (
       <div>
         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-        <CreateItemForm isEdit={isEdit} toggleReload={toggleReload} setToggleReload={setToggleReload}/>
+        <CreateItemForm toggleReload={toggleReload} setToggleReload={setToggleReload}/>
       </div>
   )
   }  else if (page=="edit-item") {
@@ -99,7 +99,7 @@ function App({page}) {
     return (
       <div>
         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-        <MyItems items={userItems} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+        <MyItems items={userItems} currentItem={currentItem} setCurrentItem={setCurrentItem} toggleReload={toggleReload} setToggleReload={setToggleReload}/>
       </div>
   )
   } else {
