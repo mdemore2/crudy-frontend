@@ -21,6 +21,7 @@ function LoginForm(){
 
         try {
             const response =  fetch('http://127.0.0.1:8000/managers/login-user', requestOptions).then(response => response.json());
+            console.log(response)
         }catch (error) {
             console.error(error);
         }
