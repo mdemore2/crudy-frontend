@@ -12,12 +12,16 @@ function LoginForm(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const data = new FormData();
+        for (const [key, value] of Object.entries(formData)) {
+            data.append(key, value);
+        }
 
         const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-    };
+            method: 'POST',
+            body: data,
+        };
+        console.log(requestOptions);
 
         try {
             const response =  fetch('http://127.0.0.1:8000/managers/login-user', requestOptions).then(response => response.json());
@@ -25,7 +29,7 @@ function LoginForm(){
         }catch (error) {
             console.error(error);
         }
-    }
+    };
 
     return <div className="login">
         <form onSubmit={handleSubmit}>
