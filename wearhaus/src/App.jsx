@@ -5,6 +5,7 @@ import './App.css'
 import NavBar from './components/navbar'
 import Home from './components/home'
 import LoginForm from './components/login'
+import ItemForm from './components/edititem'
 
 function App({page}) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -12,7 +13,7 @@ function App({page}) {
 
   async function fetchItems(signal) {
     try {
-      const response = await fetch('http://127.0.0.1:8000/inventory/all-items', {signal} );
+      const response = await fetch('http://localhost:8000/inventory/all-items', {signal} );
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -55,6 +56,13 @@ function App({page}) {
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
       <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
     </div>
+  )
+  } else if (page=="create-item") {
+    return (
+      <div>
+        <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+        <ItemForm isEdit={false}/>
+      </div>
   )
   } else {
     return (

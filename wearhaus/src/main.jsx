@@ -18,6 +18,10 @@ const router = createBrowserRouter([
     path: "register",
     element: <App page="register"/>
   },
+  {
+    path: "create-item",
+    element: <App page="create-item"/>
+  },
 ]);
 
 //    <RouterProvider router={router} />

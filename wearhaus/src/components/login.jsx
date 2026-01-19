@@ -21,11 +21,12 @@ function LoginForm({isLoggedIn, setIsLoggedIn}){
         const requestOptions = {
             method: 'POST',
             body: data,
+            credentials: 'include',
         };
         console.log(requestOptions);
 
         try {
-            const response =  await fetch('http://127.0.0.1:8000/managers/login-user', requestOptions);
+            const response =  await fetch('http://localhost:8000/managers/login-user', requestOptions);
             let body = response.json();
             console.log(body);
             if (response.status == 200){
