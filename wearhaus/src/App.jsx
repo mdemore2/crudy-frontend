@@ -5,13 +5,15 @@ import './App.css'
 import NavBar from './components/navbar'
 import Home from './components/home'
 import LoginForm from './components/login'
-import ItemForm from './components/edititem'
+import MyItems from './components/myitems'
+import CreateItemForm from './components/createitem'
 
 function App({page}) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [items, setItems] = useState([]);
   const [userItems, setUserItems] = useState([]);
   const [toggleReload, setToggleReload] = useState(false);
+  const [currentItem, setCurrentItem] = useState([]);
 
 
   async function fetchItems(signal) {
@@ -82,14 +84,14 @@ function App({page}) {
     return (
       <div>
         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-        <ItemForm isEdit={false} toggleReload={toggleReload} setToggleReload={setToggleReload}/>
+        <CreateItemForm isEdit={isEdit} toggleReload={toggleReload} setToggleReload={setToggleReload}/>
       </div>
   )
   } else if (page=="my-items") {
     return (
       <div>
         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-        <Home items={userItems}/>
+        <MyItems items={userItems} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
       </div>
   )
   } else {

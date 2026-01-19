@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function EditItemForm (item, toggleReload, setToggleReload) {
+function CreateItemForm (toggleReload, setToggleReload) {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-            name: item['name'],
-            description: item['description'],
-            quantity: item['quantity'],
+            name: '',
+            description: '',
+            quantity: '',
     });
      
     const handleChange = (e) => {
@@ -38,13 +38,6 @@ function EditItemForm (item, toggleReload, setToggleReload) {
         }
     };
 
-    //if (isEdit){
-    //    setFormData({
-    //        name: item['name'],
-    //        description:  item['description'],
-    //        quantity:  item['quantity'],
-    //    });
-    //};
 
     return <div className="edit">
         <form onSubmit={handleSubmit}>
@@ -59,4 +52,4 @@ function EditItemForm (item, toggleReload, setToggleReload) {
     </div>
 }
 
-export default EditItemForm;
+export default CreateItemForm;
