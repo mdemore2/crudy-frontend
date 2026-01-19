@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import NavBar from './components/navbar'
 import Home from './components/home'
+import LoginForm from './components/login'
 
 function App({page}) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -45,7 +46,7 @@ function App({page}) {
     return (
     <div>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-      <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+      <LoginForm isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
     </div>
   )
   } else if (page=="register") {
