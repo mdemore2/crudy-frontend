@@ -22,6 +22,10 @@ const router = createBrowserRouter([
     path: "create-item",
     element: <App page="create-item"/>
   },
+  {
+    path: "my-items",
+    element: <App page="my-items"/>
+  },
 ]);
 
 //    <RouterProvider router={router} />

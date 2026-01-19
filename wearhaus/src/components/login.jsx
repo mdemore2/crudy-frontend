@@ -1,7 +1,9 @@
 import "../styles/login.css"
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-function LoginForm({isLoggedIn, setIsLoggedIn}){
+function LoginForm({isLoggedIn, setIsLoggedIn, toggleReload, setToggleReload}){
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -31,6 +33,8 @@ function LoginForm({isLoggedIn, setIsLoggedIn}){
             console.log(body);
             if (response.status == 200){
                 setIsLoggedIn(true);
+                setToggleReload(!toggleReload);
+                navigate("/");
             }
         }catch (error) {
             console.error(error);

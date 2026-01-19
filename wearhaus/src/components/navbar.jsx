@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function NavBar({isLoggedIn, setIsLoggedIn}){
     //TODO: update state
     async function logout(setIsLoggedIn){
-        const response = await fetch("http://127.0.0.1:8000/managers/logout-user");
+        const response = await fetch("http://localhost:8000/managers/logout-user");
         const result = await response.json();
         console.log(result);
         if (response.ok){
@@ -20,7 +20,7 @@ function NavBar({isLoggedIn, setIsLoggedIn}){
                 <li><Link to="/">All Items</Link></li>
                 <li><Link to="/my-items">My Items</Link></li>
                 <li><Link to="/create-item">Create Item</Link></li>
-                <li><Link to="/" onClick={(event) => {this.logout(setIsLoggedIn)}}>Logout</Link></li>
+                <li><Link to="/" onClick={(event) => {logout(setIsLoggedIn)}}>Logout</Link></li>
             </ul>
         </div>
     } else {

@@ -10,6 +10,9 @@ import ItemForm from './components/edititem'
 function App({page}) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [items, setItems] = useState([]);
+  const [userItems, setUserItems] = useState([]);
+  const [toggleReload, setToggleReload] = useState(false);
+
 
   async function fetchItems(signal) {
     try {
@@ -28,12 +31,30 @@ function App({page}) {
     }
   }
 
+  async function fetchUserItems(signal){
+    try {
+      const response = await fetch('http://localhost:8000/inventory/my-items',{credentials:'include'}, {signal} );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Items fetched successfully:', data);
+      setUserItems(data);
+    } catch (error) {
+      console.error('Error fetching items:', error);
+      throw error;
+    }
+  }
+
   useEffect(() => {
     console.log('Firing Effect')
 
     const controller = new AbortController();
     const signal = controller.signal;
     fetchItems(signal);
+    fetchUserItems(signal);
 
     
     return () => {
@@ -41,13 +62,13 @@ function App({page}) {
       controller.abort();
     };
 
-  },[]) //nothing in dependency array, only run on mount
+  },[toggleReload]) //nothing in dependency array, only run on mount
 
  if (page == "login"){
     return (
     <div>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-      <LoginForm isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+      <LoginForm isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} toggleReload={toggleReload} setToggleReload={setToggleReload}/>
     </div>
   )
   } else if (page=="register") {
@@ -61,7 +82,14 @@ function App({page}) {
     return (
       <div>
         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-        <ItemForm isEdit={false}/>
+        <ItemForm isEdit={false} toggleReload={toggleReload} setToggleReload={setToggleReload}/>
+      </div>
+  )
+  } else if (page=="my-items") {
+    return (
+      <div>
+        <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+        <Home items={userItems}/>
       </div>
   )
   } else {

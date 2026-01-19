@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
-function ItemForm (isEdit=false, item={}) {
+import { useNavigate } from 'react-router-dom';
+
+function ItemForm (isEdit=false, item={}, toggleReload, setToggleReload) {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
             name: '',
             description: '',
@@ -27,7 +31,8 @@ function ItemForm (isEdit=false, item={}) {
             const response =  await fetch('http://localhost:8000/inventory/create-item', requestOptions);
             let body = response.json();
             console.log(body);
-            //redirect?
+            setToggleReload(!toggleReload);
+            navigate('/')
         }catch (error) {
             console.error(error);
         }
