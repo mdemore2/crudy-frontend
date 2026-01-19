@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   {
     path: "register",
     element: <App page="register"/>
-  }
+  },
 ]);
 
 //    <RouterProvider router={router} />

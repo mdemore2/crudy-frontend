@@ -1,6 +1,7 @@
+import "../styles/login.css"
 import { useEffect, useState } from 'react'
 
-function LoginForm(){
+function LoginForm({isLoggedIn, setIsLoggedIn}){
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -10,7 +11,7 @@ function LoginForm(){
         setFormData({...formData, [e.target.name]: e.target.value});
     };
 
-    const handleSubmit = (e) => {
+    async function handleSubmit(e){
         e.preventDefault();
         const data = new FormData();
         for (const [key, value] of Object.entries(formData)) {
@@ -24,8 +25,12 @@ function LoginForm(){
         console.log(requestOptions);
 
         try {
-            const response =  fetch('http://127.0.0.1:8000/managers/login-user', requestOptions).then(response => response.json());
-            console.log(response)
+            const response =  await fetch('http://127.0.0.1:8000/managers/login-user', requestOptions);
+            let body = response.json();
+            console.log(body);
+            if (response.status == 200){
+                setIsLoggedIn(true);
+            }
         }catch (error) {
             console.error(error);
         }

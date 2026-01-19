@@ -52,14 +52,14 @@ function App({page}) {
   } else if (page=="register") {
     return (
     <div>
-      <NavBar />
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
       <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
     </div>
   )
   } else {
     return (
       <div>
-        <NavBar />
+        <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         <Home items={items}/>
       </div>
     )
