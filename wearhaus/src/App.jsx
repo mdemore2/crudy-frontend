@@ -8,6 +8,7 @@ import LoginForm from './components/login'
 import MyItems from './components/myitems'
 import CreateItemForm from './components/createitem'
 import EditItemForm from './components/edititem'
+import Register from './components/register'
 
 function App({page}) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -78,7 +79,7 @@ function App({page}) {
     return (
     <div>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-      <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+      <Register />
     </div>
   )
   } else if (page=="create-item") {
