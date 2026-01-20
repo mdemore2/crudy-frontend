@@ -29,13 +29,17 @@ function LoginForm({isLoggedIn, setIsLoggedIn, toggleReload, setToggleReload}){
 
         try {
             const response =  await fetch('http://localhost:8000/managers/login-user', requestOptions);
-            let body = response.json();
+            let body = await response.json();
             console.log(body);
+            if (!response.ok){
+                alert(body['message'])
+                throw new Error(response.status);
+            }
             if (response.status == 200){
                 setIsLoggedIn(true);
                 setToggleReload(!toggleReload);
                 navigate("/");
-            }
+            } 
         }catch (error) {
             console.error(error);
         }

@@ -1,0 +1,22 @@
+
+p {
+    font-size: 12px;
+}
+
+.my-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.my-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+svg {
+    cursor:pointer;
+}
+
+.button-container {
+    display: flex;
+    gap: 12px;
+    justify-content: space-around;
+}

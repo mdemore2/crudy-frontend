@@ -42,11 +42,11 @@ function EditItemForm ({currentItem, toggleReload, setToggleReload}) {
 
     return <div className="edit">
         <form onSubmit={handleSubmit}>
-            <label>Name: <input name="name" value={formData.name} 
+            <label class='form-label'>Name: <input class='form-control' name="name" value={formData.name} 
             onChange={handleChange}/></label>
-            <label>Description: <input name="description" value={formData.description} 
+            <label class='form-label'>Description: <input class='form-control' name="description" value={formData.description} 
             onChange={handleChange} /></label>
-            <label>Quantity: <input name="quantity" type='number' value={formData.quantity} 
+            <label class='form-label'>Quantity: <input class='form-control' name="quantity" type='number' value={formData.quantity} 
             onChange={handleChange} /></label>
             <button type="submit">Submit</button>
         </form>
