@@ -49,7 +49,7 @@ function Register () {
     };
 
 
-    return <div className="edit">
+    return <div className="register">
         <form onSubmit={handleSubmit}>
             <label>First Name: <input name="first_name" value={formData.first_name} 
             onChange={handleChange}/></label>
