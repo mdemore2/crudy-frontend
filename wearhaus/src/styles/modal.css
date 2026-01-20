@@ -14,8 +14,7 @@
 }
 
 .my-modal > div {
-    height: 150;
-    width: 240;
+    max-width: 70%;
     margin: auto;
     padding: 2%;
     border-radius: 10px;
