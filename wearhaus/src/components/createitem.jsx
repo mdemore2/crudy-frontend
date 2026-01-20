@@ -39,7 +39,7 @@ function CreateItemForm ({toggleReload, setToggleReload}) {
     };
 
 
-    return <div className="edit">
+    return <div className="card">
         <form onSubmit={handleSubmit}>
             <label class='form-label'>Name: <input class='form-control' name="name" value={formData.name} 
             onChange={handleChange}/></label>

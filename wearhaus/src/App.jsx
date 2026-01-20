@@ -9,6 +9,8 @@ import MyItems from './components/myitems'
 import CreateItemForm from './components/createitem'
 import EditItemForm from './components/edititem'
 import Register from './components/register'
+import Modal from "./components/modal"
+//import Modal from '@mui/material/Modal';
 
 function App({page}) {
   const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)");
@@ -21,6 +23,11 @@ function App({page}) {
   const [userItems, setUserItems] = useState([]);
   const [toggleReload, setToggleReload] = useState(false);
   const [currentItem, setCurrentItem] = useState([]);
+  //modals
+  const [content, setContent] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+  const handleOpen = () => setisOpen(true);
+  const handleClose = () => setisOpen(false);
 
 
   async function fetchItems(signal) {
@@ -111,8 +118,10 @@ function App({page}) {
   } else {
     return (
       <div>
+        <Modal isOpen={isOpen} setIsOpen={setIsOpen} content={content} ></Modal>
+
         <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-        <Home items={items}/>
+        <Home items={items} setIsOpen={setIsOpen} setContent={setContent}/>
       </div>
     )
   }

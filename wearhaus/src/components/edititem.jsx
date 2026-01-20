@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import '../styles/itemcard.css';
+import '../styles/mycard.css';
 
-function EditItemForm ({currentItem, toggleReload, setToggleReload}) {
+function EditItemForm ({setIsEdit, currentItem, toggleReload, setToggleReload}) {
     const navigate = useNavigate();
     console.log(currentItem.name);
     const [formData, setFormData] = useState({
@@ -32,7 +34,8 @@ function EditItemForm ({currentItem, toggleReload, setToggleReload}) {
             let body = response.json();
             console.log(body);
             setToggleReload(!toggleReload);
-            navigate('/')
+            setIsEdit(false);
+            navigate('/my-items')
         }catch (error) {
             console.error(error);
         }
@@ -40,7 +43,7 @@ function EditItemForm ({currentItem, toggleReload, setToggleReload}) {
 
 
 
-    return <div className="edit">
+    return <div className="card">
         <form onSubmit={handleSubmit}>
             <label class='form-label'>Name: <input class='form-control' name="name" value={formData.name} 
             onChange={handleChange}/></label>

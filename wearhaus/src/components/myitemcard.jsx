@@ -4,9 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiPencil } from '@mdi/js';
 import { mdiTrashCan } from '@mdi/js';
+import EditItemForm from './edititem';
+import { useState } from 'react';
 
 function MyItemCard({item, currentItem, setCurrentItem, toggleReload, setToggleReload}){
     const navigate = useNavigate();
+    const [isEdit, setIsEdit] = useState(false);
+
 
     async function handleOnClick (e) {
 
@@ -38,10 +42,14 @@ function MyItemCard({item, currentItem, setCurrentItem, toggleReload, setToggleR
         } else {
                 console.log(`editing item:${item.name}`)
                 setCurrentItem(item)
-                navigate('../edit-item')
+                setIsEdit(true);
+                //navigate('../edit-item')
             }
     }
 
+    if (isEdit){
+        return <EditItemForm setIsEdit={setIsEdit} currentItem={currentItem} setCurrentItem={setCurrentItem} toggleReload={toggleReload} setToggleReload={setToggleReload}/>
+    }
     return <div className="my-card card">
         <div class='fields'>
             <h5>{item.name}</h5>
