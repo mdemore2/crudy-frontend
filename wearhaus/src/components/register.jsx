@@ -39,6 +39,7 @@ function Register () {
             let body = await response.json();
             if (!response.ok){
                 alert(body['message'])
+                throw new Error(response.status);
             }
             console.log(body);
             navigate('../login')
