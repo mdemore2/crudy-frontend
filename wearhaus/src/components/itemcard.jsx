@@ -24,7 +24,7 @@ function ItemCard({item, setIsOpen, setContent}){
     } else {
         description = item.description
     }
-    return <div className="card" onClick={handleClick}>
+    return <div className="card clickable" onClick={handleClick}>
         <h5>{item.name}</h5>
         <p>{description}</p>
         <h5>Quantity: {item.quantity}</h5>
