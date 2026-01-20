@@ -36,7 +36,10 @@ function Register () {
         console.log(requestOptions);
         try {
             const response =  await fetch('http://localhost:8000/managers/register', requestOptions);
-            let body = response.json();
+            let body = await response.json();
+            if (!response.ok){
+                alert(body['message'])
+            }
             console.log(body);
             navigate('../login')
         }catch (error) {
