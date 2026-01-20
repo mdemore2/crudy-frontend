@@ -41,8 +41,3 @@
   color: #888;
 }
 
-form {
-    display: flex;
-    gap: 12px;
-    flex-direction: column;
-}

@@ -32,7 +32,7 @@ function CreateItemForm ({toggleReload, setToggleReload}) {
             let body = response.json();
             console.log(body);
             setToggleReload(!toggleReload);
-            navigate('/')
+            navigate('/my-items')
         }catch (error) {
             console.error(error);
         }

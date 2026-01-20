@@ -38,7 +38,7 @@ function LoginForm({isLoggedIn, setIsLoggedIn, toggleReload, setToggleReload}){
             if (response.status == 200){
                 setIsLoggedIn(true);
                 setToggleReload(!toggleReload);
-                navigate("/");
+                navigate("/my-items");
             } 
         }catch (error) {
             console.error(error);

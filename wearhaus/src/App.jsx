@@ -11,6 +11,11 @@ import EditItemForm from './components/edititem'
 import Register from './components/register'
 
 function App({page}) {
+  const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)");
+  if (darkModePreference.matches){
+    let htmlRoot = document.querySelector('html');
+    htmlRoot.setAttribute('data-bs-theme', 'dark')
+  }
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [items, setItems] = useState([]);
   const [userItems, setUserItems] = useState([]);

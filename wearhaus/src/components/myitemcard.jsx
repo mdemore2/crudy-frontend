@@ -31,7 +31,7 @@ function MyItemCard({item, currentItem, setCurrentItem, toggleReload, setToggleR
                 let body = response.json();
                 console.log(body);
                 setToggleReload(!toggleReload);
-                navigate('/')
+                navigate('/my-items')
             }catch (error) {
                 console.error(error);
             }        
