@@ -43,9 +43,9 @@ function LoginForm({isLoggedIn, setIsLoggedIn, toggleReload, setToggleReload}){
 
     return <div className="login">
         <form onSubmit={handleSubmit}>
-            <label>Username: <input name="username" value={formData.username} 
+            <label class='form-label'>Username: <input class='form-control' name="username" value={formData.username} 
             onChange={handleChange}/></label>
-            <label>Password: <input name="password" value={formData.password} 
+            <label class='form-label'>Password: <input type="password" class='form-control' name="password" value={formData.password} 
             onChange={handleChange} /></label>
             <button type="submit">Login</button>
         </form>

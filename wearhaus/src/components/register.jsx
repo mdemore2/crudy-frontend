@@ -51,15 +51,15 @@ function Register () {
 
     return <div className="register">
         <form onSubmit={handleSubmit}>
-            <label>First Name: <input name="first_name" value={formData.first_name} 
+            <label class='form-label'>First Name: <input class='form-control' name="first_name" value={formData.first_name} 
             onChange={handleChange}/></label>
-            <label>Last Name: <input name="last_name" value={formData.last_name} 
+            <label class='form-label'>Last Name: <input class='form-control' name="last_name" value={formData.last_name} 
             onChange={handleChange}/></label>
-            <label>Username: <input name="username" value={formData.username} 
+            <label class='form-label'>Username: <input class='form-control' name="username" value={formData.username} 
             onChange={handleChange}/></label>
-            <label>Password: <input name="password" value={formData.password} 
+            <label class='form-label'>Password: <input type="password" class='form-control' name="password" value={formData.password} 
             onChange={handleChange}/></label>
-            <label>Confirm Password: <input name="confirm_password" value={formData.confirm_password} 
+            <label class='form-label'>Confirm Password: <input type="password" class='form-control' name="confirm_password" value={formData.confirm_password} 
             onChange={handleChange}/></label>
             <button type="submit">Register</button>
         </form>

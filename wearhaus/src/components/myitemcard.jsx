@@ -1,12 +1,23 @@
 import '../styles/itemcard.css';
+import '../styles/mycard.css';
 import { useNavigate } from 'react-router-dom';
-
+import Icon from '@mdi/react';
+import { mdiPencil } from '@mdi/js';
+import { mdiTrashCan } from '@mdi/js';
 
 function MyItemCard({item, currentItem, setCurrentItem, toggleReload, setToggleReload}){
     const navigate = useNavigate();
 
     async function handleOnClick (e) {
-        if (e.target.className == "deleteBtn")
+
+        let tgtClass = e.target.getAttribute("class");
+        if (tgtClass == null)
+        {
+            tgtClass = e.target.parentElement.getAttribute('class');
+        }
+        
+        console.log(`target class name: ${tgtClass}`)
+        if (tgtClass == "deleteBtn")
         {
             console.log(`deleting item:${item.name}`)
             const requestOptions = {
@@ -31,11 +42,17 @@ function MyItemCard({item, currentItem, setCurrentItem, toggleReload, setToggleR
             }
     }
 
-    return <div className="card">
-        <h5>{item.name}</h5>
-        <p>{item.description}</p>
-        <h5>Quantity: {item.quantity}</h5>
-        <p class="editBtn" onClick={handleOnClick}>Edit</p> <p class="deleteBtn" onClick={handleOnClick}>Delete</p>
+    return <div className="my-card card">
+        <div class='fields'>
+            <h5>{item.name}</h5>
+            <p>{item.description}</p>
+            <h5>Quantity: {item.quantity}</h5>
+        </div>
+        <div class="button-container">
+            <Icon path={mdiPencil} size={1} class="editBtn" onClick={handleOnClick} /> 
+            <Icon path={mdiTrashCan} size={1} class="deleteBtn" onClick={handleOnClick} />
+
+        </div>
     </div>
 }
 
