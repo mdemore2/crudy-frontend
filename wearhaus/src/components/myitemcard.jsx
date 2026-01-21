@@ -8,10 +8,10 @@ import EditItemForm from './edititem';
 import { useState } from 'react';
 
 function MyItemCard({item, currentItem, setCurrentItem, toggleReload, setToggleReload}){
-      if (process.env.NODE_ENV == 'production'){
-    const BASE_URL = "http://wearhaus-backend.markdemore.com"
-  } else {
-    const BASE_URL = "http://localhost:8000"
+  const BASE_URL = "http://localhost:8000";
+
+  if (process.env.NODE_ENV == 'production'){
+    BASE_URL = "http://wearhaus-backend.markdemore.com";
   }
 
     const navigate = useNavigate();

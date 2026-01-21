@@ -2,12 +2,11 @@ import "../styles/navbar.css"
 import { Link } from "react-router-dom";
 
 function NavBar({isLoggedIn, setIsLoggedIn}){
-      if (process.env.NODE_ENV == 'production'){
-    const BASE_URL = "http://wearhaus-backend.markdemore.com"
-  } else {
-    const BASE_URL = "http://localhost:8000"
-  }
+  const BASE_URL = "http://localhost:8000";
 
+  if (process.env.NODE_ENV == 'production'){
+    BASE_URL = "http://wearhaus-backend.markdemore.com";
+  }
     async function logout(setIsLoggedIn){
         const response = await fetch(`${BASE_URL}/managers/logout-user`);
         const result = await response.json();

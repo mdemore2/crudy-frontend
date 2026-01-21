@@ -4,11 +4,11 @@ import '../styles/itemcard.css';
 import '../styles/mycard.css';
 
 function EditItemForm ({setIsEdit, currentItem, toggleReload, setToggleReload}) {
-    if (process.env.NODE_ENV == 'production'){
-        const BASE_URL = "http://wearhaus-backend.markdemore.com"
-    } else {
-        const BASE_URL = "http://localhost:8000"
-    }
+  const BASE_URL = "http://localhost:8000";
+
+  if (process.env.NODE_ENV == 'production'){
+    BASE_URL = "http://wearhaus-backend.markdemore.com";
+  }
 
     const navigate = useNavigate();
     console.log(currentItem.name);
