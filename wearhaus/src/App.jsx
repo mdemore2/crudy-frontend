@@ -13,6 +13,12 @@ import Modal from "./components/modal"
 //import Modal from '@mui/material/Modal';
 
 function App({page}) {
+  if (process.env.NODE_ENV == 'production'){
+    const BASE_URL = "http://wearhaus-backend.markdemore.com"
+  } else {
+    const BASE_URL = "http://localhost:8000"
+  }
+
   const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)");
   if (darkModePreference.matches){
     let htmlRoot = document.querySelector('html');
@@ -32,7 +38,7 @@ function App({page}) {
 
   async function fetchItems(signal) {
     try {
-      const response = await fetch('http://localhost:8000/inventory/all-items', {signal} );
+      const response = await fetch(`${BASE_URL}/inventory/all-items`, {signal} );
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -49,7 +55,7 @@ function App({page}) {
 
   async function fetchUserItems(signal){
     try {
-      const response = await fetch('http://localhost:8000/inventory/my-items',{credentials:'include'}, {signal} );
+      const response = await fetch(`${BASE_URL}/inventory/my-items`,{credentials:'include'}, {signal} );
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

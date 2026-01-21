@@ -2,6 +2,13 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function CreateItemForm ({toggleReload, setToggleReload}) {
+  if (process.env.NODE_ENV == 'production'){
+    const BASE_URL = "http://wearhaus-backend.markdemore.com"
+  } else {
+    const BASE_URL = "http://localhost:8000"
+  }
+
+
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -28,7 +35,7 @@ function CreateItemForm ({toggleReload, setToggleReload}) {
         };
         console.log(requestOptions);
         try {
-            const response =  await fetch('http://localhost:8000/inventory/create-item', requestOptions);
+            const response =  await fetch(`${BASE_URL}/inventory/create-item`, requestOptions);
             let body = response.json();
             console.log(body);
             setToggleReload(!toggleReload);

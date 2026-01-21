@@ -8,6 +8,12 @@ import EditItemForm from './edititem';
 import { useState } from 'react';
 
 function MyItemCard({item, currentItem, setCurrentItem, toggleReload, setToggleReload}){
+      if (process.env.NODE_ENV == 'production'){
+    const BASE_URL = "http://wearhaus-backend.markdemore.com"
+  } else {
+    const BASE_URL = "http://localhost:8000"
+  }
+
     const navigate = useNavigate();
     const [isEdit, setIsEdit] = useState(false);
 
@@ -31,7 +37,7 @@ function MyItemCard({item, currentItem, setCurrentItem, toggleReload, setToggleR
             };
             console.log(requestOptions);
             try {
-                const response =  await fetch(`http://localhost:8000/inventory/delete-item/${item.id}`, requestOptions);
+                const response =  await fetch(`${BASE_URL}/inventory/delete-item/${item.id}`, requestOptions);
                 let body = response.json();
                 console.log(body);
                 setToggleReload(!toggleReload);

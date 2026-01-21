@@ -4,6 +4,12 @@ import '../styles/itemcard.css';
 import '../styles/mycard.css';
 
 function EditItemForm ({setIsEdit, currentItem, toggleReload, setToggleReload}) {
+    if (process.env.NODE_ENV == 'production'){
+        const BASE_URL = "http://wearhaus-backend.markdemore.com"
+    } else {
+        const BASE_URL = "http://localhost:8000"
+    }
+
     const navigate = useNavigate();
     console.log(currentItem.name);
     const [formData, setFormData] = useState({
@@ -30,7 +36,7 @@ function EditItemForm ({setIsEdit, currentItem, toggleReload, setToggleReload}) 
         };
         console.log(requestOptions);
         try {
-            const response =  await fetch(`http://localhost:8000/inventory/edit-item/${currentItem.id}`, requestOptions);
+            const response =  await fetch(`${BASE_URL}/inventory/edit-item/${currentItem.id}`, requestOptions);
             let body = response.json();
             console.log(body);
             setToggleReload(!toggleReload);

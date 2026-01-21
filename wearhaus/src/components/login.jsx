@@ -3,6 +3,12 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
 function LoginForm({isLoggedIn, setIsLoggedIn, toggleReload, setToggleReload}){
+      if (process.env.NODE_ENV == 'production'){
+    const BASE_URL = "http://wearhaus-backend.markdemore.com"
+  } else {
+    const BASE_URL = "http://localhost:8000"
+  }
+
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
@@ -28,7 +34,7 @@ function LoginForm({isLoggedIn, setIsLoggedIn, toggleReload, setToggleReload}){
         console.log(requestOptions);
 
         try {
-            const response =  await fetch('http://localhost:8000/managers/login-user', requestOptions);
+            const response =  await fetch(`${BASE_URL}/managers/login-user`, requestOptions);
             let body = await response.json();
             console.log(body);
             if (!response.ok){

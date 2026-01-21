@@ -2,9 +2,14 @@ import "../styles/navbar.css"
 import { Link } from "react-router-dom";
 
 function NavBar({isLoggedIn, setIsLoggedIn}){
-    //TODO: update state
+      if (process.env.NODE_ENV == 'production'){
+    const BASE_URL = "http://wearhaus-backend.markdemore.com"
+  } else {
+    const BASE_URL = "http://localhost:8000"
+  }
+
     async function logout(setIsLoggedIn){
-        const response = await fetch("http://localhost:8000/managers/logout-user");
+        const response = await fetch(`${BASE_URL}/managers/logout-user`);
         const result = await response.json();
         console.log(result);
         if (response.ok){
