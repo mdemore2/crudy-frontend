@@ -13,12 +13,12 @@ import Modal from "./components/modal"
 //import Modal from '@mui/material/Modal';
 
 function App({page}) {
-  const BASE_URL = "http://localhost:8000";
+  let BASE_URL = "http://localhost:8000";
 
   if (process.env.NODE_ENV == 'production'){
     BASE_URL = "http://wearhaus-backend.markdemore.com";
   }
-  
+
   const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)");
   if (darkModePreference.matches){
     let htmlRoot = document.querySelector('html');

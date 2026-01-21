@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function CreateItemForm ({toggleReload, setToggleReload}) {
-  const BASE_URL = "http://localhost:8000";
+  let BASE_URL = "http://localhost:8000";
 
   if (process.env.NODE_ENV == 'production'){
     BASE_URL = "http://wearhaus-backend.markdemore.com";

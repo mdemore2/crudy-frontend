@@ -4,7 +4,7 @@ import '../styles/itemcard.css';
 import '../styles/mycard.css';
 
 function EditItemForm ({setIsEdit, currentItem, toggleReload, setToggleReload}) {
-  const BASE_URL = "http://localhost:8000";
+  let BASE_URL = "http://localhost:8000";
 
   if (process.env.NODE_ENV == 'production'){
     BASE_URL = "http://wearhaus-backend.markdemore.com";
