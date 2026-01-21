@@ -2,6 +2,11 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function Register () {
+      let BASE_URL = "http://localhost:8000";
+
+  if (process.env.NODE_ENV == 'production'){
+    BASE_URL = "https://wearhaus-backend.markdemore.com";
+  }
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -49,7 +54,7 @@ function Register () {
     };
 
 
-    return <div className="register">
+    return <div className="login">
         <form onSubmit={handleSubmit}>
             <label class='form-label'>First Name: <input class='form-control' name="first_name" value={formData.first_name} 
             onChange={handleChange}/></label>
