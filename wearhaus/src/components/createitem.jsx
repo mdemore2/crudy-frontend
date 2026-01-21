@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
+import '../styles/createform.css';
+
 function CreateItemForm ({toggleReload, setToggleReload}) {
   let BASE_URL = "http://localhost:8000";
 
@@ -47,7 +49,7 @@ function CreateItemForm ({toggleReload, setToggleReload}) {
 
 
     return <div className="card">
-        <form onSubmit={handleSubmit}>
+        <form class="create-form" onSubmit={handleSubmit}>
             <label class='form-label'>Name: <input class='form-control' name="name" value={formData.name} 
             onChange={handleChange}/></label>
             <label class='form-label'>Description: <textarea class='form-control' name="description" value={formData.description} 
