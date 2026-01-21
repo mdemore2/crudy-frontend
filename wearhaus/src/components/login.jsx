@@ -6,7 +6,7 @@ function LoginForm({isLoggedIn, setIsLoggedIn, toggleReload, setToggleReload}){
   let BASE_URL = "http://localhost:8000";
 
   if (process.env.NODE_ENV == 'production'){
-    BASE_URL = "http://wearhaus-backend.markdemore.com";
+    BASE_URL = "https://wearhaus-backend.markdemore.com";
   }
 
     const navigate = useNavigate();
